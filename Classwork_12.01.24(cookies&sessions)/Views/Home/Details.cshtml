@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+@model ProductClickSateDisplay;
+
+
+<div class="justify-content-center mt-3">
+    <p>Product name: @Model.CurrentProduct.Name</p>
+    <p>Current price: @Model.CurrentProduct.Price EUR</p>
+    <p>Amount in stock: <span id="displayValue">@Model.CurrentProduct.Amount</span></p>
+    <p>Info:</p>
+    <div class="myDiv">@ViewBag.Info</div>
+    <a class="btn btn-primary w-100 mt-3" asp-action="details" asp-controller="home" asp-route-isClicked="@Model.ClickState.IsClicked" asp-route-productid="@Model.CurrentProduct.Id">Add to cart</a>
+    @if (@ViewBag.Clicked)
+    {
+        <div class="myDiv mt-3">
+            <form id="amountform" asp-action="addproducttocart" method="post">
+                <input type="hidden" name="productid" value="@Model.CurrentProduct.Id" />
+                <div class="form-group">
+                    <label>Amount to be ordered:</label>
+                    <input id="enteredAmount" type="number" class="form-control" name="amount" placeholder="Enter amount...">
+                </div>
+                <button type="button" class="btn btn-primary mt-3" onclick="checkAmount()">Add to cart</button>
+            </form>
+        </div>
+    }
+    <a class="btn btn-primary w-100 mt-3" href="/home/user" role="button">Back</a>
+</div>
+
+
+
+
+ 

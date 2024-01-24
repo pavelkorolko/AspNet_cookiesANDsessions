@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*
+//1
+@model string
+
+<div class="text-center">
+    <p>@Model</p>
+</div>
+//2
+*@
+
+@model List<User>;
+
+<user-list users="@Model"></user-list>
+
+

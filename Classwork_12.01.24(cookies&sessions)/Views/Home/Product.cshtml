@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+}
+
+@model ViewDisplay;
+
+<form method="post" action="~/home/search" id="searchform">
+    <input-search categories="@Model.Categories.ToList()" selected-input-value="@Model.SelectedValue" selected-category="@Model.SelectedCategory"></input-search>
+
+    @{
+        if(Model.Products.Count() == 0)
+        {
+            @await Html.PartialAsync("NoSuchPage");
+        }
+        else
+        {
+            <product-list products="@Model.Products"></product-list>
+        }
+    }
+</form>
+
+
